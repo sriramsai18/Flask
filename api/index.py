@@ -7,4 +7,4 @@ app = Flask(__name__)
 @app.route('/<path:path>')
 def catch_all(path):
     # Change the URL below if you renamed your Render app!
-    return redirect("https://onrender.com", code=301)
+    return redirect("https://flask-vroi.onrender.com/", code=301)
