@@ -8,7 +8,7 @@ app = Flask(__name__)
 # --- CRITICAL CHANGE FOR VERCEL ---
 # This finds the xgb.pkl file regardless of where the script runs
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(BASE_DIR, '../xgb.pkl') 
+model_path = os.path.join(BASE_DIR, 'xgb.pkl') 
 model = pickle.load(open(model_path, 'rb'))
 # ----------------------------------
 
