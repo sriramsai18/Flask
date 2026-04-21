@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Predict Performance{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="form-card">
+        <h2 class="text-center mb-4">Employee Performance Input</h2>
+        <form action="{{ url_for('predict') }}" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Quarter (1-5)</label>
+                    <input type="number" name="quarter" class="form-control mb-3" required>
+                    
+                    <label>Department (0: Sewing, 1: Finishing)</label>
+                    <input type="number" name="department" class="form-control mb-3" required>
+                    
+                    <label>Day (0-6)</label>
+                    <input type="number" name="day" class="form-control mb-3" required>
+                    
+                    <label>Team Number</label>
+                    <input type="number" name="team" class="form-control mb-3" required>
+                    
+                    <label>Targeted Productivity (0.0 - 1.0)</label>
+                    <input type="number" step="0.01" name="targeted_productivity" class="form-control mb-3" required>
+                    
+                    <label>SMV (Standard Minute Value)</label>
+                    <input type="number" step="0.01" name="smv" class="form-control mb-3" required>
+                    
+                    <label>Over Time</label>
+                    <input type="number" name="over_time" class="form-control mb-3" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Incentive</label>
+                    <input type="number" name="incentive" class="form-control mb-3" required>
+                    
+                    <label>Idle Time</label>
+                    <input type="number" name="idle_time" class="form-control mb-3" required>
+                    
+                    <label>Idle Men</label>
+                    <input type="number" name="idle_men" class="form-control mb-3" required>
+                    
+                    <label>No. of Style Changes</label>
+                    <input type="number" name="no_of_style_change" class="form-control mb-3" required>
+                    
+                    <label>Number of Workers</label>
+                    <input type="number" name="no_of_workers" class="form-control mb-3" required>
+                    
+                    <label>Month (1-12)</label>
+                    <input type="number" name="month" class="form-control mb-3" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-4">Predict Productivity</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

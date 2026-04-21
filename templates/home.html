@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Employee Performance Predictor{% endblock %}
+
+{% block content %}
+<section class="hero-section text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Employee Performance Prediction</h1>
+        <p class="lead text-muted mb-4" style="max-width:600px; margin:0 auto;">
+            Optimize workforce potential through Machine Learning insights. Predict productivity and make data-driven decisions.
+        </p>
+        <a href="{{ url_for('predict') }}" class="btn btn-light btn-lg px-4 py-2">Start Prediction</a>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2>Key Benefits</h2>
+            <p class="text-muted">How this app transforms employee management</p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Talent Retention</h5>
+                        <p class="card-text">
+                            Identify high-performing employees at risk of attrition and implement targeted retention strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Performance Improvement</h5>
+                        <p class="card-text">
+                            Pinpoint skill gaps and provide timely coaching to enhance employee productivity and output.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Resource Allocation</h5>
+                        <p class="card-text">
+                            Match talent with the right projects based on predicted strengths and optimize team assignments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ url_for('about') }}" class="btn btn-outline-primary">Learn More About the App</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

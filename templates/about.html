@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Employee Performance Predictor{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1>About the Performance Prediction App</h1>
+            <p class="lead text-muted mx-auto" style="max-width:720px;">
+                A lightweight Flask web app that predicts employee productivity using a trained XGBoost model and real production input data.
+            </p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Predictive Insight</h5>
+                        <p class="card-text">
+                            The app evaluates employee productivity based on factors like department, team, target, idle time and output metrics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Data-Driven Decisions</h5>
+                        <p class="card-text">
+                            Managers can use the prediction results to identify coaching needs, allocate resources, and improve production planning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Built with Flask</h5>
+                        <p class="card-text">
+                            Clean Flask routing and templates provide a simple interface to collect input and display model results instantly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <h2>How it works</h2>
+                <p>
+                    Enter employee and production details, then submit the form. The app forwards the values to the XGBoost model and returns a productivity category.
+                </p>
+                <ul class="list-group list-group-flush rounded-4 overflow-hidden shadow-sm">
+                    <li class="list-group-item">Quarter, day, month, team and department inputs</li>
+                    <li class="list-group-item">Work metrics such as SMV, overtime and incentive</li>
+                    <li class="list-group-item">Idle time, idle men, workers and style changes</li>
+                    <li class="list-group-item">Model prediction shown on a clean results page</li>
+                </ul>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Why this app helps</h5>
+                        <p class="card-text">
+                            It helps identify productivity patterns early, reduce waste, and support better decision-making in manufacturing environments.
+                        </p>
+                        <p class="mb-0"><strong>Use cases:</strong></p>
+                        <ul>
+                            <li>Team performance review</li>
+                            <li>Resource allocation</li>
+                            <li>Process improvement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
