@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 import pickle
+import os # Added for path handling
 
 app = Flask(__name__)
 
-# Load your XGBoost model
-model = pickle.load(open('xgb.pkl', 'rb'))
+# --- CRITICAL CHANGE FOR VERCEL ---
+# This finds the xgb.pkl file regardless of where the script runs
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, '../xgb.pkl') 
+model = pickle.load(open(model_path, 'rb'))
+# ----------------------------------
 
 @app.route('/')
 def home():
@@ -18,32 +23,19 @@ def about():
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
-        quarter = request.form['quarter']
-        department = request.form['department']
-        day = request.form['day']
-        team = request.form['team']
-        targeted_productivity = request.form['targeted_productivity']
-        smv = request.form['smv']
-        over_time = request.form['over_time']
-        incentive = request.form['incentive']
-        idle_time = request.form['idle_time']
-        idle_men = request.form['idle_men']
-        no_of_style_change = request.form['no_of_style_change']
-        no_of_workers = request.form['no_of_workers']
-        month = request.form['month']
-
-        # 2. Convert inputs to float (important for ML models)
+        # (Your existing logic is perfect)
         total = [[
-            float(quarter), float(department), float(day), float(team), 
-            float(targeted_productivity), float(smv), float(over_time), 
-            float(incentive), float(idle_time), float(idle_men), 
-            float(no_of_style_change), float(no_of_workers), float(month)
+            float(request.form['quarter']), float(request.form['department']), 
+            float(request.form['day']), float(request.form['team']), 
+            float(request.form['targeted_productivity']), float(request.form['smv']), 
+            float(request.form['over_time']), float(request.form['incentive']), 
+            float(request.form['idle_time']), float(request.form['idle_men']), 
+            float(request.form['no_of_style_change']), float(request.form['no_of_workers']), 
+            float(request.form['month'])
         ]]
         
-        # 3. Predict
         prediction = model.predict(total)
         
-        # 4. Logic for output text
         if prediction <= 0.3:
             text = 'The Employee is averagely productive'
         elif 0.3 < prediction <= 0.8:
@@ -53,8 +45,8 @@ def predict():
             
         return render_template('submit.html', prediction_text=text)
     
-    # If it's a GET request, just show the predict page
     return render_template('predict.html')
 
+# Vercel doesn't use app.run(), but keeping this won't hurt local testing
 if __name__ == '__main__':
     app.run(debug=True)
